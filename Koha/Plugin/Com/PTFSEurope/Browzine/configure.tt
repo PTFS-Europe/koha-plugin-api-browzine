@@ -1,0 +1,49 @@
+[% INCLUDE 'doc-head-open.inc' %]
+<title>Koha: Availability BrowZine Plugin: Configuration</title>
+<link rel="stylesheet" type="text/css" href="[% PLUGIN_PATH %]/browzine.css"></link>
+[% INCLUDE 'doc-head-close.inc' %]
+</head>
+<body>
+[% INCLUDE 'header.inc' %]
+[% INCLUDE 'cat-search.inc' %]
+
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; ILL availability BrowZine &rsaquo; Configuration</div>
+
+<div id="doc3">
+    <h3 id="ill_browzine_config_h3">Koha: ILL availability BrowZine: Configuration</h3>
+
+    <form id="ill_browzine_configure" method="get">
+        <input type="hidden" name="class" value="[% CLASS %]"/>
+        <input type="hidden" name="method" value="[% METHOD %]"/>
+        <div id="ill_browzine_name" class="ill_browzine_config_field">
+            <label for="ill_browzine_name_input">Display name: </label>
+            <input id="ill_browzine_name_input" placeholder="Browzine" type="text" name="ill_browzine_name" value="[% config.ill_browzine_name || 'BrowZine' %]">
+            <p>The text that is displayed in the user interface above search results from BrowZine</p>
+        </div>
+        <div id="ill_browzine_api_key" class="ill_browzine_config_field">
+            <label for="ill_browzine_api_key_input">API key supplied by LibKey: </label>
+            <input required id="ill_browzine_api_key_input" placeholder="me@nowhere.com" type="text" name="ill_browzine_api_key" value="[% config.ill_browzine_api_key %]">
+            <p>This field is required</p>
+        </div>
+        <div id="ill_browzine_library_id" class="ill_browzine_config_field">
+            <label for="ill_browzine_library_id_input">Library ID supplied by LibKey: </label>
+            <input required id="ill_browzine_library_id_input" placeholder="Enter library ID" type="text" name="ill_browzine_library_id" value="[% config.ill_browzine_library_id %]">
+            <p>This field is required</p>
+        </div>
+
+        <input type="hidden" name="save" value="1" />
+        <input type="submit" value="Save configuration" />
+    </form>
+
+    <hr/>
+
+    <div id="ill_browzine_upgrade">
+        <h5>Upgrade status</h5>
+        [% IF last_upgraded %]
+            Plugin was last upgraded on this system on [% last_upgraded | $KohaDates with_hours => 1 %]
+        [% ELSE %]
+            Plugin has never been upgraded.
+        [% END %]
+    </div>
+
+[% INCLUDE 'intranet-bottom.inc' %]

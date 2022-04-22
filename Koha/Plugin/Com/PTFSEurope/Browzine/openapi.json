@@ -1,0 +1,33 @@
+{
+    "/search": {
+        "get": {
+            "x-mojo-to": "Com::PTFSEurope::Browzine::Api#search",
+            "operationId": "ApiSearchBrowzine",
+            "tags": ["browzine", "search"],
+            "parameters": [
+                {
+                    "name": "doi",
+                    "in": "query",
+                    "description": "The DOI being searched for",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "pmid",
+                    "in": "query",
+                    "description": "The PMID being searched for",
+                    "required": false,
+                    "type": "string"
+                }
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "The result of the search call to the BrowZine API"
+                }
+            }
+        }
+    }
+}
